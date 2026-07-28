@@ -53,5 +53,61 @@
 #
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+# def single_table():
+    """Generates a multiplication table (1 to 12) for a single user-provided number."""
+    user_input = input("Enter a number: ")
+
+    # Validate integer input
+    try:
+        num = int(user_input)
+    except ValueError:
+        print("Error: Input must be a valid integer.")
+        return
+
+    # Validate positive integer
+    if num <= 0:
+        print("Error: Please enter a positive integer.")
+        return
+
+    print(f"\nMultiplication Table for {num}:")
+    for i in range(1, 13):
+        print(f"{num} x {i} = {num * i}")
+
+
+def tables_up_to_n():
+    """Generates multiplication tables (1 to 12) for all numbers from 1 to N."""
+    user_input = input("Enter a number N: ")
+
+    # Validate integer input
+    try:
+        n = int(user_input)
+    except ValueError:
+        print("Error: Input must be a valid integer.")
+        return
+
+    # Validate positive integer
+    if n <= 0:
+        print("Error: N must be a positive integer.")
+        return
+
+    for num in range(1, n + 1):
+        print(f"\nMultiplication Table for {num}:")
+        for i in range(1, 13):
+            print(f"{num} x {i} = {num * i}")
+
+        if num < n:
+            print("-" * 40)
+
+
+# Main Execution Block
+if __name__ == "__main__":
+    # --- PART A ---
+    print("=== PART A: Single Table ===")
+    single_table()
+
+    print("\n" + "=" * 40 + "\n")
+
+    # --- PART B ---
+    print("=== PART B: Tables from 1 to N ===")
+    tables_up_to_n()
 
