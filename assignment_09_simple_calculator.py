@@ -66,5 +66,104 @@
 #
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+# # Arithmetic operation functions
+
+
+def add(a, b):
+    return a + b
+
+
+def subtract(a, b):
+    return a - b
+
+
+def multiply(a, b):
+    return a * b
+
+
+def divide(a, b):
+    if b == 0:
+        print("Error: Cannot divide by zero.")
+        return None
+    return round(a / b, 2)
+
+
+def modulus(a, b):
+    if b == 0:
+        print("Error: Cannot divide by zero.")
+        return None
+    return a % b
+
+
+def exponentiate(a, b):
+    return a**b
+
+
+def get_number_input(prompt):
+    """Helper function to safely get a float/int number from user."""
+    while True:
+        try:
+            val = input(prompt).strip()
+            # Convert to int if it's a whole number, else float
+            num = float(val)
+            return int(num) if num.is_integer() else num
+        except ValueError:
+            print("Error: Invalid number. Please try again.")
+
+
+def display_menu():
+    """Prints the calculator menu."""
+    print("\n" + "--------------------------------")
+    print("        SIMPLE CALCULATOR")
+    print("--------------------------------")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Modulus")
+    print("6. Exponentiation")
+    print("7. Quit")
+
+
+def main():
+    while True:
+        display_menu()
+        choice = input("Select an operation (1-7): ").strip()
+
+        if choice == "7":
+            print("Goodbye!")
+            break
+
+        if choice not in ["1", "2", "3", "4", "5", "6"]:
+            print("Error: Invalid option. Please select a number from 1 to 7.")
+            continue
+
+        num1 = get_number_input("Enter first number: ")
+        num2 = get_number_input("Enter second number: ")
+
+        if choice == "1":
+            res = add(num1, num2)
+            op_symbol = "+"
+        elif choice == "2":
+            res = subtract(num1, num2)
+            op_symbol = "-"
+        elif choice == "3":
+            res = multiply(num1, num2)
+            op_symbol = "*"
+        elif choice == "4":
+            res = divide(num1, num2)
+            op_symbol = "/"
+        elif choice == "5":
+            res = modulus(num1, num2)
+            op_symbol = "%"
+        elif choice == "6":
+            res = exponentiate(num1, num2)
+            op_symbol = "**"
+
+        if res is not None:
+            print(f"Result: {num1} {op_symbol} {num2} = {res}")
+
+
+if __name__ == "__main__":
+    main()
 
